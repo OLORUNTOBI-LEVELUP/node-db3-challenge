@@ -12,10 +12,9 @@ function findById (id) {
 
 function findSteps(id) {
     return db('steps')
-    .join('schemes', 'steps.scheme_id', 'schemes.id')
-    .select('step_number', 'instructions')
-    .where('scheme_id', schemeId)
-    .orderBy('steps.step_number');
+      .join('schemes', 'schemes.id', 'scheme_id')
+      .select('steps.id', 'schemes.scheme_name', 'steps.step_number', 'steps.instructions')
+      .where('scheme_id', schemeId);
 }
 
 function add(scheme){
